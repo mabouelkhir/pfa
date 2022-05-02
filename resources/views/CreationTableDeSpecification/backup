@@ -1,0 +1,44 @@
+
+
+
+
+@extends('layouts.masterm')
+@section('content')
+
+
+    <div class="container">
+        <div class="row">
+            <div class="col-md-6">
+
+                    
+                     @foreach ($lesProjets as $projet ) 
+                   
+                        <div class="list-group">
+                            
+                            <a href="{{ url('projet/'.$projet->id)}}" class="list-group-item list-group-item-action" hidden>{{$projet->nom}}</a>
+                            <a href="{{ url('projet/performance/'.$projet->id)}}" class="list-group-item list-group-item-action" hidden>{{$projet->nom}}</a>
+                            <a href="{{ url('tabledespecification/'.$projet->id)}}" class="list-group-item list-group-item-action" hidden>{{$projet->nom}}</a>
+                            <form action="{{route('prepare')}}" method="POST">
+                                @csrf
+                                <input type="text" value="{{$projet->id}}" name="projet_id" hidden >
+                                <button type="submit">{{$projet->nom}}</button>
+                            </form>
+                            
+                            
+                        </div>
+            
+                    @endforeach
+             
+                    
+
+             
+            </div>
+        </div>
+    </div>
+
+    
+
+
+@endsection
+
+
