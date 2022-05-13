@@ -1,6 +1,13 @@
 @extends('layouts.master')
+<style>
+  .everything{
+    background-color:#efefef;
+  }
+</style>
+<div class="everything">
 @section('content')
 @include('partials.analyseetdesign')
+<link rel="stylesheet" href="{{asset('css/pop.css')}}">
                @if (session('status'))
                     <div class="alert alert-success">
                         {{ session('status') }}
@@ -24,58 +31,29 @@
         
     @endforeach
 
-
-<div class="accordion" id="accordionExample">
-    <div class="accordion-item">
-      <h2 class="accordion-header" id="headingOne">
-        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="false" aria-controls="collapseOne">
-          Créer Point à evaluer
-        </button>
-      </h2>
-      <div id="collapseOne" class="accordion-collapse collapse" aria-labelledby="headingOne" data-bs-parent="#accordionExample" style="">
-        <div class="accordion-body">
-            <form method="POST" action="{{route('point.store')}}" enctype="multipart/form-data">
-                @csrf
-                
-             
-                 <div class="container rounded bg-white mt-5 mb-5">
-                     <div class="row">
-                         
-                         <div class="col-md-5 border-right">
-                             <div class="p-3 py-5">
-                                 <div class="d-flex justify-content-between align-items-center mb-3">
-                                     <h4 class="text-right">
-                                         Point à evaluer Setting
-                                     </h4>
-                                 </div>
-                                 
-                                 <div class="row mt-2">
-                                     <div class="col-md-6"><label class="labels">Nom Point à évaluer</label><input type="text" class="form-control" placeholder="nom point a evaluer" name="nom_point"></div>
-             
-                                 </div>
-                                 <div class="row mt-2">
-                                    <div class="col-md-6"><label class="labels"></label><input type="text" class="form-control" placeholder="Section Id" name="section_id" value="{{$IdSection}}" hidden ></div>
-                                    
-                                </div>
-                                 
-                                 
-                                    
-                                 
-                                 
-                                 <div class="mt-5 text-center"><button class="btn btn-primary profile-button" type="submit">ADD Point à évaluer</button></div>
-                             </div>
-                         </div>
-                        
-                     </div>
-                 </div>
-                 </div>
-                 </div>
-                  
-             </form>
-                     
-        </div>
+    <div class="overlay" id="overlay">
+        <div class="popup">
+          <div onclick="CloseModal()" class="CloseIcon">&#10006;</div>
+          <form method="POST" action="{{route('point.store')}}" enctype="multipart/form-data">
+            @csrf
+              <h4 class="text-right mt-3 d-flex justify-content-center">Point Setting</h4>
+              
+              <div class="col-md-6 text-center mt-5 " style="margin-left: 120px;">
+                 <input type="text" class="form-control text-center center ml-5" placeholder="nom point à évaluer" name="nom_point" >
+              </div>
+              
+              <div class="col-md-6 "><label class="labels"></label>
+                <input type="text" class="form-control ml-5" placeholder="SECTION ID" name="section_id" value="{{$IdSection}}" hidden>
+             </div>
+                                
+              <div class="mt-5 text-center " ><button class="btn btn-primary" type="submit">ADD Point à évaluer</button></div>
+            </div>
+              
+           </form>
+        
       </div>
-    </div>
+      <button onclick="OpenModal()" class="btn btn-primary" style="margin-left: 35px;">Ajouter un Point à évaluer </button>
+  
   
 
 
@@ -110,7 +88,7 @@
                   
                           <table class="table custom-table">
                             <thead>
-                              <tr>  
+                              <tr style=" background-color: black; color:white;">  
                   
                                 <th scope="col">
                                   
@@ -152,14 +130,18 @@
                                      </select>
                                
                                 </td>
+                                
                             @endforeach
                             </tr>
                             
                               
                               
                             
-                        @endforeach
-                             <tr><button type="submit">save</button></tr>
+                            @endforeach
+                             <tr>
+                               <button type="submit">Sauvegarder</button>
+                              </tr>
+                             
                             </tbody>
                           </table>
                         </form>
@@ -172,11 +154,7 @@
                       
                       
                   
-                      <script src="js/jquery-3.3.1.min.js"></script>
-                      <script src="js/popper.min.js"></script>
-                      <script src="js/bootstrap.min.js"></script>
-                      <script src="js/main.js"></script>
-                    </body>
+                      
                 
                     <script src="{{asset('tablecheck/js/jquery-3.3.1.min.js')}}"></script>
                     <script src="{{asset('tablecheck/js/popper.min.js')}}"></script>
@@ -206,9 +184,10 @@
                     });
                 
                 </script>
+                <script src="{{asset('js/pop.js')}}"></script>
                 
 
-
+</div>
          
 
 

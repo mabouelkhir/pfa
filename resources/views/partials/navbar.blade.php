@@ -12,22 +12,21 @@
             <a class="nav-link scrollto active" href="/home">Dashboard</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link scrollto active"  href="{{url('/tabledespecification/'.$IdProjet)}}" >Analyse et design</a>
+            <a class="nav-link scrollto active"  href="{{url('projet/'.$IdProjet.'/tabledespecification')}}" >Analyse et design</a>
           </li>
-   
-          
-              <a class="dropdown-item" href="{{url('/projet/performance/'.$IdProjet)}}" hidden>Catégorie de performance</a>
-           
-              <a class="nav-link scrollto active" href="{{url('/tabledespecification/'.$IdProjet)}}" hidden>Table De Spécification</a>
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Banque De Question</a>
+            <div class="dropdown-menu">
+              <a class="dropdown-item" href="{{url('projet/'.$IdProjet.'/banquedequestion/')}}">Redaction</a>
               
-         
-          
-          <li class="nav-item">
-            <a class="nav-link" href="{{url('/questionnaire/'.$IdProjet)}}">Banque De Question</a>
+              <div class="dropdown-divider"></div>
+              <a class="dropdown-item" href="{{url('projet/'.$IdProjet.'/banquedequestion/validation')}}">Validation</a>
+            </div>
           </li>
           <li class="nav-item">
             <a class="nav-link" href="{{url('/questionnaire/'.$IdProjet)}}">Questionnaires</a>
           </li>
+          
           <ul class="navbar-nav ms-auto">
           @guest
                             @if (Route::has('login'))

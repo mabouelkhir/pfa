@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Hôte : 127.0.0.1
--- Généré le : lun. 02 mai 2022 à 21:01
+-- Généré le : sam. 07 mai 2022 à 02:33
 -- Version du serveur : 10.4.22-MariaDB
 -- Version de PHP : 8.1.2
 
@@ -78,7 +78,11 @@ INSERT INTO `chapitres` (`id`, `projet_id`, `nom_chapitre`, `created_at`, `updat
 (61, 5, 'chapitre3', '2022-04-30 00:27:27', '2022-04-30 00:27:27'),
 (62, 5, 'chapitre3', '2022-04-30 00:29:08', '2022-04-30 00:29:08'),
 (63, 5, 'hhhhhhhh', '2022-04-30 00:31:06', '2022-04-30 00:31:06'),
-(64, 6, 'chapitre1', '2022-05-02 11:31:09', '2022-05-02 11:31:09');
+(64, 6, 'chapitre1', '2022-05-02 11:31:09', '2022-05-02 11:31:09'),
+(65, 8, 'chapitre3', '2022-05-02 20:14:43', '2022-05-02 20:14:43'),
+(67, 9, 'okoko', '2022-05-02 22:00:41', '2022-05-02 22:00:41'),
+(68, 10, 'chapitre2', '2022-05-02 22:10:55', '2022-05-02 22:10:55'),
+(69, 8, 'chapitre4444', '2022-05-03 17:29:32', '2022-05-03 17:29:32');
 
 -- --------------------------------------------------------
 
@@ -376,7 +380,19 @@ INSERT INTO `migrations` (`id`, `migration`, `batch`) VALUES
 (73, '2022_04_30_060440_add_column_statut', 16),
 (74, '2022_04_30_065823_add_column_statut', 17),
 (75, '2022_04_30_093445_add_column_statut', 18),
-(76, '2022_05_01_022439_create_performance_points_table', 19);
+(76, '2022_05_01_022439_create_performance_points_table', 19),
+(77, '2022_05_02_232143_create_questionnaires_table', 20),
+(78, '2022_05_02_232547_create_table_questionnaires', 21),
+(79, '2022_05_05_002105_create_banques_table', 22),
+(80, '2022_05_05_004314_create_qcms_table', 23),
+(81, '2022_05_05_013057_create_qcms_table', 24),
+(82, '2022_05_06_012002_add_columns_questions', 25),
+(83, '2022_05_06_013747_add_columns_questions', 26),
+(84, '2022_05_06_021147_add_columns_questions', 27),
+(85, '2022_05_06_021450_add_columns_questions', 28),
+(86, '2022_05_06_224723_create_qcms_table', 29),
+(87, '2022_05_06_224935_create_reponses_table', 30),
+(88, '2022_05_06_230109_create_propositions_table', 31);
 
 -- --------------------------------------------------------
 
@@ -481,7 +497,33 @@ INSERT INTO `performance_point` (`id`, `point_id`, `performance_id`, `statut`, `
 (108, 16, 4, 'non', NULL, NULL),
 (109, 16, 5, 'non', NULL, NULL),
 (110, 16, 6, 'oui', NULL, NULL),
-(111, 17, 2, 'non', NULL, NULL);
+(111, 17, 2, 'non', NULL, NULL),
+(129, 22, 1, 'non', NULL, NULL),
+(130, 22, 2, 'oui', NULL, NULL),
+(131, 23, 1, 'oui', NULL, NULL),
+(132, 23, 2, 'non', NULL, NULL),
+(133, 24, 1, 'oui', NULL, NULL),
+(134, 24, 2, 'oui', NULL, NULL),
+(135, 24, 3, 'oui', NULL, NULL),
+(136, 24, 4, 'oui', NULL, NULL),
+(137, 24, 5, 'oui', NULL, NULL),
+(138, 24, 6, 'oui', NULL, NULL),
+(139, 26, 1, 'non', NULL, NULL),
+(140, 26, 3, 'non', NULL, NULL),
+(141, 26, 5, 'oui', NULL, NULL),
+(142, 27, 1, 'non', NULL, NULL),
+(143, 27, 3, 'oui', NULL, NULL),
+(144, 27, 5, 'non', NULL, NULL),
+(145, 25, 1, 'oui', NULL, NULL),
+(146, 25, 3, 'oui', NULL, NULL),
+(147, 25, 5, 'oui', NULL, NULL),
+(148, 26, 2, 'oui', NULL, NULL),
+(149, 27, 2, 'non', NULL, NULL),
+(150, 25, 2, 'non', NULL, NULL),
+(151, 28, 1, 'oui', NULL, NULL),
+(152, 28, 2, 'oui', NULL, NULL),
+(153, 28, 3, 'oui', NULL, NULL),
+(154, 28, 5, 'oui', NULL, NULL);
 
 -- --------------------------------------------------------
 
@@ -520,7 +562,13 @@ INSERT INTO `performance_projet` (`id`, `projet_id`, `performance_id`, `created_
 (79, 8, 3, NULL, NULL, 'oui'),
 (80, 8, 4, NULL, NULL, 'oui'),
 (81, 8, 5, NULL, NULL, 'oui'),
-(82, 8, 6, NULL, NULL, 'oui');
+(82, 8, 6, NULL, NULL, 'oui'),
+(83, 10, 1, NULL, NULL, 'oui'),
+(84, 10, 2, NULL, NULL, 'oui'),
+(85, 10, 3, NULL, NULL, 'non'),
+(86, 10, 4, NULL, NULL, 'non'),
+(87, 10, 5, NULL, NULL, 'non'),
+(88, 10, 6, NULL, NULL, 'non');
 
 -- --------------------------------------------------------
 
@@ -698,10 +746,16 @@ CREATE TABLE `points` (
 INSERT INTO `points` (`id`, `section_id`, `nom_point`, `created_at`, `updated_at`) VALUES
 (8, 38, 'point à évaluer', NULL, NULL),
 (9, 38, 'point à évaluer1', NULL, NULL),
-(12, 51, 'p1', NULL, NULL),
 (15, 39, '5555', '2022-05-02 09:10:10', '2022-05-02 09:10:10'),
 (16, 38, '5555', '2022-05-02 11:23:54', '2022-05-02 11:23:54'),
-(17, 56, '5555', '2022-05-02 11:31:29', '2022-05-02 11:31:29');
+(17, 56, '5555', '2022-05-02 11:31:29', '2022-05-02 11:31:29'),
+(22, 63, 'point à évaluer1', '2022-05-02 22:14:22', '2022-05-02 22:14:22'),
+(23, 63, 'point à évaluer12', '2022-05-02 22:17:17', '2022-05-02 22:17:17'),
+(24, 59, 'point à évaluer', '2022-05-03 00:18:11', '2022-05-03 00:18:11'),
+(25, 65, 'point test', '2022-05-04 15:37:45', '2022-05-04 15:37:45'),
+(26, 51, '5555', '2022-05-04 16:34:17', '2022-05-04 16:34:17'),
+(27, 51, 'point à évaluer12', '2022-05-04 16:34:25', '2022-05-04 16:34:25'),
+(28, 65, 'point à évaluer12', '2022-05-04 23:42:33', '2022-05-04 23:42:33');
 
 -- --------------------------------------------------------
 
@@ -763,7 +817,88 @@ INSERT INTO `projets` (`id`, `created_at`, `updated_at`, `nom`, `description`, `
 (8, '2022-04-21 22:42:42', '2022-04-21 22:42:42', 'Projet4', 'description du projet4', 3),
 (9, '2022-04-21 22:43:15', '2022-04-21 22:43:15', 'Projet5', 'description du projet5', 3),
 (10, '2022-04-21 22:43:35', '2022-04-21 22:43:35', 'Projet6', 'description du projet6', 3),
-(11, '2022-04-22 14:03:36', '2022-04-22 14:03:36', 'projet7', 'decription chapitre7', 3);
+(11, '2022-04-22 14:03:36', '2022-04-22 14:03:36', 'projet7', 'decription chapitre7', 3),
+(12, '2022-05-03 01:27:15', '2022-05-03 01:27:15', 'ingénierie informatique et technologie émergentes', 'hhhhhhhhhhhhh', 3);
+
+-- --------------------------------------------------------
+
+--
+-- Structure de la table `propositions`
+--
+
+CREATE TABLE `propositions` (
+  `id` int(10) UNSIGNED NOT NULL,
+  `proposition` text COLLATE utf8mb4_unicode_ci NOT NULL,
+  `qcm_id` int(10) UNSIGNED NOT NULL,
+  `statut` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT 'non',
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Déchargement des données de la table `propositions`
+--
+
+INSERT INTO `propositions` (`id`, `proposition`, `qcm_id`, `statut`, `created_at`, `updated_at`) VALUES
+(1, 'test1', 1, 'oui', '2022-05-06 23:28:22', '2022-05-07 00:23:52'),
+(2, 'test2', 1, 'non', '2022-05-06 23:29:53', '2022-05-06 23:29:53'),
+(3, 'test3', 1, 'non', '2022-05-06 23:33:05', '2022-05-06 23:33:05'),
+(4, 'test4', 1, 'oui', '2022-05-06 23:33:10', '2022-05-07 00:21:18'),
+(7, 'proposition5', 1, 'oui', '2022-05-06 23:39:50', '2022-05-07 00:32:16'),
+(8, 'test1', 2, 'oui', '2022-05-07 00:25:23', '2022-05-07 00:26:06'),
+(9, 'test2', 2, 'non', '2022-05-07 00:25:29', '2022-05-07 00:25:29'),
+(10, 'test3', 2, 'non', '2022-05-07 00:25:33', '2022-05-07 00:25:33'),
+(11, 'test4', 2, 'non', '2022-05-07 00:25:38', '2022-05-07 00:25:38'),
+(12, 'test5', 2, 'oui', '2022-05-07 00:25:42', '2022-05-07 00:26:03');
+
+-- --------------------------------------------------------
+
+--
+-- Structure de la table `qcms`
+--
+
+CREATE TABLE `qcms` (
+  `id` int(10) UNSIGNED NOT NULL,
+  `nom_qcm` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `description` text COLLATE utf8mb4_unicode_ci NOT NULL,
+  `point_id` int(10) UNSIGNED NOT NULL,
+  `nom_performance` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `statut` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT 'non',
+  `auteur` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `amorce` text COLLATE utf8mb4_unicode_ci NOT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Déchargement des données de la table `qcms`
+--
+
+INSERT INTO `qcms` (`id`, `nom_qcm`, `description`, `point_id`, `nom_performance`, `statut`, `auteur`, `amorce`, `created_at`, `updated_at`) VALUES
+(1, 'qcm1', 'qcm1description', 24, 'Compréhension', 'non', 'professeur2', 'TEsting if it work ?', '2022-05-06 23:07:28', '2022-05-06 23:07:28'),
+(2, 'qcm2', 'qcm2description', 24, 'Compréhension', 'non', 'professeur2', 'test if work2?', '2022-05-07 00:25:06', '2022-05-07 00:25:06');
+
+-- --------------------------------------------------------
+
+--
+-- Structure de la table `questionnaires`
+--
+
+CREATE TABLE `questionnaires` (
+  `id` int(10) UNSIGNED NOT NULL,
+  `titre` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `description` text COLLATE utf8mb4_unicode_ci NOT NULL,
+  `projet_id` int(10) UNSIGNED NOT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Déchargement des données de la table `questionnaires`
+--
+
+INSERT INTO `questionnaires` (`id`, `titre`, `description`, `projet_id`, `created_at`, `updated_at`) VALUES
+(1, 'mmmmmmm', '111111111111111111111111', 8, '2022-05-02 23:56:53', '2022-05-02 23:56:53');
 
 -- --------------------------------------------------------
 
@@ -815,7 +950,11 @@ INSERT INTO `sections` (`id`, `chapitre_id`, `nom_section`, `created_at`, `updat
 (53, 58, 'section3', NULL, NULL),
 (55, 45, 'section3', '2022-04-30 00:33:34', '2022-04-30 00:33:34'),
 (56, 64, 'p1', '2022-05-02 11:31:16', '2022-05-02 11:31:16'),
-(58, 57, 'p1', '2022-05-02 17:42:21', '2022-05-02 17:42:21');
+(59, 57, 'section1', '2022-05-02 20:51:37', '2022-05-02 20:51:37'),
+(61, 57, 'section1', '2022-05-02 21:07:44', '2022-05-02 21:07:44'),
+(62, 67, 'p1', '2022-05-02 22:00:51', '2022-05-02 22:00:51'),
+(63, 68, 'section1', '2022-05-02 22:14:12', '2022-05-02 22:14:12'),
+(65, 69, 'section test', '2022-05-04 15:37:28', '2022-05-04 15:37:28');
 
 -- --------------------------------------------------------
 
@@ -928,7 +1067,7 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`id`, `role_id`, `name`, `email`, `avatar`, `email_verified_at`, `password`, `remember_token`, `settings`, `created_at`, `updated_at`) VALUES
-(1, 1, 'Admin', 'admin@admin.com', 'users/default.png', NULL, '$2y$10$rDvbL9yMgukZwAeaWwYuseAIBTVCtQtGRltgjhdg6noRkgjwRXYlu', 'TXbL74O5nr5SXYXgtD2ROevaPYmZLlpib9CuPnH6BssfveR9lYkrAeexQ7aM', NULL, '2022-04-20 00:16:23', '2022-04-20 00:16:23'),
+(1, 1, 'Admin', 'admin@admin.com', 'users/default.png', NULL, '$2y$10$rDvbL9yMgukZwAeaWwYuseAIBTVCtQtGRltgjhdg6noRkgjwRXYlu', 'dNHsxfQ5tIQXnSyugW4bSqJzdneBFzf0Xk0ekVkNTJytmZrVbS3hcVyQ9vfr', NULL, '2022-04-20 00:16:23', '2022-04-20 00:16:23'),
 (2, 2, 'professeur1', 'professeur1@professeur1.com', 'users\\April2022\\BAWKABroIA2hvdKHrb5C.png', NULL, '$2y$10$z8sohYm6TM658R5Tm8LlYuPQLA4WRzDqOscyFbJ9jNlG409fI4Vuu', NULL, '{\"locale\":\"en\"}', '2022-04-20 00:20:21', '2022-04-20 00:20:21'),
 (3, 2, 'professeur2', 'professeur2@professeur2.com', 'users\\April2022\\hGku8mgKYS46NGewdOa8.png', NULL, '$2y$10$fgLjYCsRvnpLzkWOVH1TwO0mI7qjqdyq8nzEVvD.DQPsGpOAWBxfS', NULL, '{\"locale\":\"en\"}', '2022-04-20 00:21:27', '2022-04-20 00:21:27');
 
@@ -1089,6 +1228,27 @@ ALTER TABLE `projets`
   ADD PRIMARY KEY (`id`);
 
 --
+-- Index pour la table `propositions`
+--
+ALTER TABLE `propositions`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `propositions_qcm_id_foreign` (`qcm_id`);
+
+--
+-- Index pour la table `qcms`
+--
+ALTER TABLE `qcms`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `qcms_point_id_foreign` (`point_id`);
+
+--
+-- Index pour la table `questionnaires`
+--
+ALTER TABLE `questionnaires`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `questionnaires_projet_id_foreign` (`projet_id`);
+
+--
 -- Index pour la table `roles`
 --
 ALTER TABLE `roles`
@@ -1146,7 +1306,7 @@ ALTER TABLE `categories`
 -- AUTO_INCREMENT pour la table `chapitres`
 --
 ALTER TABLE `chapitres`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=65;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=70;
 
 --
 -- AUTO_INCREMENT pour la table `data_rows`
@@ -1182,7 +1342,7 @@ ALTER TABLE `menu_items`
 -- AUTO_INCREMENT pour la table `migrations`
 --
 ALTER TABLE `migrations`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=77;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=89;
 
 --
 -- AUTO_INCREMENT pour la table `pages`
@@ -1200,13 +1360,13 @@ ALTER TABLE `performances`
 -- AUTO_INCREMENT pour la table `performance_point`
 --
 ALTER TABLE `performance_point`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=123;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=155;
 
 --
 -- AUTO_INCREMENT pour la table `performance_projet`
 --
 ALTER TABLE `performance_projet`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=83;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=89;
 
 --
 -- AUTO_INCREMENT pour la table `permissions`
@@ -1224,7 +1384,7 @@ ALTER TABLE `personal_access_tokens`
 -- AUTO_INCREMENT pour la table `points`
 --
 ALTER TABLE `points`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=20;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=29;
 
 --
 -- AUTO_INCREMENT pour la table `posts`
@@ -1236,7 +1396,25 @@ ALTER TABLE `posts`
 -- AUTO_INCREMENT pour la table `projets`
 --
 ALTER TABLE `projets`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
+
+--
+-- AUTO_INCREMENT pour la table `propositions`
+--
+ALTER TABLE `propositions`
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
+
+--
+-- AUTO_INCREMENT pour la table `qcms`
+--
+ALTER TABLE `qcms`
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+
+--
+-- AUTO_INCREMENT pour la table `questionnaires`
+--
+ALTER TABLE `questionnaires`
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT pour la table `roles`
@@ -1248,7 +1426,7 @@ ALTER TABLE `roles`
 -- AUTO_INCREMENT pour la table `sections`
 --
 ALTER TABLE `sections`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=59;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=66;
 
 --
 -- AUTO_INCREMENT pour la table `settings`
@@ -1322,6 +1500,24 @@ ALTER TABLE `permission_role`
 --
 ALTER TABLE `points`
   ADD CONSTRAINT `points_section_id_foreign` FOREIGN KEY (`section_id`) REFERENCES `sections` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
+
+--
+-- Contraintes pour la table `propositions`
+--
+ALTER TABLE `propositions`
+  ADD CONSTRAINT `propositions_qcm_id_foreign` FOREIGN KEY (`qcm_id`) REFERENCES `qcms` (`id`);
+
+--
+-- Contraintes pour la table `qcms`
+--
+ALTER TABLE `qcms`
+  ADD CONSTRAINT `qcms_point_id_foreign` FOREIGN KEY (`point_id`) REFERENCES `points` (`id`);
+
+--
+-- Contraintes pour la table `questionnaires`
+--
+ALTER TABLE `questionnaires`
+  ADD CONSTRAINT `questionnaires_projet_id_foreign` FOREIGN KEY (`projet_id`) REFERENCES `projets` (`id`);
 
 --
 -- Contraintes pour la table `sections`

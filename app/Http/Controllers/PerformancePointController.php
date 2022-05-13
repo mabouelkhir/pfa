@@ -52,7 +52,7 @@ class PerformancePointController extends Controller
         }else{
             DB::update('update performance_point set statut = ? where point_id = ? and performance_id = ?',[$data2[$i],$data3[$i],$data1hh[$i]]);
         }
-        }return redirect()->back();
+        }return redirect()->back()->with('status', ' Sauvegardé avec succès!');
    
 }
 }

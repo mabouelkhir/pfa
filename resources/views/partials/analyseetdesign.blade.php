@@ -14,7 +14,7 @@
             <a class="nav-link" href="{{url('/projet/'.$IdProjet)}}">Point à évaluer</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="{{url('/tabledespecification/'.$IdProjet)}}">Table De Spécification</a>
+            <a class="nav-link" href="{{url('projet/'.$IdProjet.'/tabledespecification')}}">Table De Spécification</a>
           </li>
           
           

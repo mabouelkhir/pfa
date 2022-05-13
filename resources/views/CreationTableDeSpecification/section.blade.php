@@ -1,6 +1,13 @@
 @extends('layouts.master')
+<style>
+  .everything{
+    background-color:#efefef;
+  }
+</style>
+<div class="everything">
 @section('content')
 @include('partials.analyseetdesign')
+<link rel="stylesheet" href="{{asset('css/pop.css')}}">
         @if (session('status'))
             <div class="alert alert-success">
                 {{ session('status') }}
@@ -18,102 +25,127 @@
    @endforeach
             
 
-<div class="accordion" id="accordionExample">
-    <div class="accordion-item">
-      <h2 class="accordion-header" id="headingOne">
-        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="false" aria-controls="collapseOne">
-          Créer Section
-        </button>
-      </h2>
-      <div id="collapseOne" class="accordion-collapse collapse" aria-labelledby="headingOne" data-bs-parent="#accordionExample" style="">
-        <div class="accordion-body">
-            <form method="POST" action="{{route('section.store')}}" enctype="multipart/form-data">
-                @csrf
-                
-             
-                 <div class="container rounded bg-white mt-5 mb-5">
-                     <div class="row">
-                         
-                         <div class="col-md-5 border-right">
-                             <div class="p-3 py-5">
-                                 <div class="d-flex justify-content-between align-items-center mb-3">
-                                     <h4 class="text-right">
-                                         Section Setting
-                                     </h4>
-                                 </div>
-                                 
-                                 <div class="row mt-2">
-                                     <div class="col-md-6"><label class="labels">Nom Section</label><input type="text" class="form-control" placeholder="nom section" name="nom_section"></div>
-             
-                                 </div>
-                                 <div class="row mt-2">
-                                    <div class="col-md-6"><label class="labels"></label><input type="text" class="form-control" placeholder="Chapitre ID" name="chapitre_id" value="{{$IdChapitre}}" hidden></div>
-                                    
-                                </div>
-                                 
-                                 
-                                    
-                                 
-                                 
-                                 <div class="mt-5 text-center"><button class="btn btn-primary profile-button" type="submit">ADD Section</button></div>
-                             </div>
-                         </div>
-                        
-                     </div>
-                 </div>
-                 </div>
-                 </div>
-                  
-             </form>
-                     
-        </div>
+
+
+    
+    <div class="overlay" id="overlay">
+        <div class="popup">
+          <div onclick="CloseModal()" class="CloseIcon">&#10006;</div>
+          <form method="POST" action="{{route('section.store')}}" enctype="multipart/form-data">
+            @csrf
+              <h4 class="text-right mt-3 justify-content-center" style="margin-right:255px;">Section Setting</h4>
+              
+              <div class="col-md-6 text-center mt-5 " style="margin-left: 120px;">
+                 <input type="text" class="form-control text-center center ml-5" placeholder="nom section" name="nom_section"  >
+              </div>
+              
+              <div class="col-md-6 "><label class="labels"></label>
+                <input type="text" class="form-control ml-5" placeholder="Chapitre ID" name="chapitre_id" value="{{$IdChapitre}}" hidden>
+             </div>
+                                
+              <div class="mt-5 text-center " ><button class="btn btn-primary" type="submit">ADD Section</button></div>
+            </div>
+              
+           </form>
+        
       </div>
-    </div>
+      <button onclick="OpenModal()" class="btn btn-primary" style="margin-left: 35px;">Ajouter une section</button>
   
 
-    
-    
 
+      <head>
+        <!-- Required meta tags -->
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+        <link href="https://fonts.googleapis.com/css?family=Roboto:300,400&display=swap" rel="stylesheet">
+    
+        <link rel="stylesheet" href="{{asset('tablecheck/fonts/icomoon/style.css')}}">
+         
+        <link rel="stylesheet" href="{{asset('tablecheck/css/owl.carousel.min.css')}}">
+    
+        <!-- Bootstrap CSS -->
+        <link rel="stylesheet" href="{{asset('tablecheck/css/bootstrap.min.css')}}">
+        
+        <!-- Style -->
+        <link rel="stylesheet" href="{{asset('tablecheck/css/style.css')}}">
+    
+        <title>Section</title>
+      </head>
+      <body>
+
+
+        <div class="content">
+          
+          <div class="container">
+            <h2 class="mb-5">Les Sections</h2>
+            
+      
+            <div class="table-responsive custom-table-responsive">
+      
+              <table class="table custom-table">
+                <thead>
+                  <tr style=" background-color: black; color:white;">  
+      
+                    <th scope="col">
+                      
+                    </th>
+                    
+                    <th scope="col">ID</th>
+                    <th scope="col">Section</th>
+                    <th scope="col">delete</th>
+                    <th scope="col">edit</th>
+            
+                  </tr>
+                </thead>
+             
+                <tbody>
+                   @foreach ($lesSections as $section )
+                  <tr scope="row">
+                    <th></th>
+                    <td>{{$section->id}}</td>
+                    <td>
+                        <a href="{{ url('projet/'.$IdProjet.'/chapitre/'.$IdChapitre.'/section/'.$section->id)}}" class="link-dark">{{$section -> nom_section }}</a>
+                    </td>
+                    <td>
+                        <form action="{{ route('section.destroy',$section->id)}}" method="POST">
+                            @csrf
+                            @method('delete')
+                            <button type="submit" class="trash show_confirm" aria-label="Close">
+                                    <span aria-hidden="true">&times;</span>
+                            </button>
+                        </form>
+                    </td>
+                   
+                    <td> </td>
+                   
+                  </tr>
+                  @endforeach
+                </tbody>
+              </table>
+           
+            </div>
+      
+      
+          </div>
+      
+        </div>
+          
+          
+      
+          
+    
+        <script src="{{asset('tablecheck/js/jquery-3.3.1.min.js')}}"></script>
+        <script src="{{asset('tablecheck/js/popper.min.js')}}"></script>
+        <script src="{{asset('tablecheck/js/bootstrap.min.js')}}"></script>
+        <script src="{{asset('tablecheck/js/main.js')}}"></script>
+      </body>
+    </html>
 
 
 
                 
-@foreach ($lesSections as $section ) 
-<div class="container">
-    <div class="row">
-        <div class="col-md-6">      
-                <div class="list-group">
-                    <form action="{{ route('section.destroy',$section->id)}}" method="POST">
-                        <table>
-                            <tr>
-                                <td width="200px"> <a href="{{ url('projet/'.$IdProjet.'/chapitre/'.$IdChapitre.'/section/'.$section->id)}}" class="list-group-item list-group-item-action">{{$section -> nom_section }}</a></td>
-                                <td>
-                                    @csrf
-                                    @method('delete')
-                                    <button type="submit" class="trash show_confirm" aria-label="Close">
-                                        <span aria-hidden="true">&times;</span>
-                                    </button>
-                                </td>
-                                
-                            
-                    </form>
-                                <td>
-                                    @csrf
-                                    @method('delete')
-                                    <button type="submit" class="trash show_confirm" aria-label="Close">
-                                        <span aria-hidden="true">&times;</span>
-                                    </button>
-                                </td>
-                             </tr>  
-                             
-                        </table>
-                   
-                    
-                  </div>
-                </div>
-            </div>
-        </div>
-        @endforeach
+
+
         <script src="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/2.1.0/sweetalert.min.js"></script>
                     <script type="text/javascript">
                     
@@ -136,13 +168,13 @@
                         });
                     
                     </script>
-                    
+                    <script src="{{asset('js/pop.js')}}"></script>
 
 
     
 
                 
-
+</div>
                 
 
 
