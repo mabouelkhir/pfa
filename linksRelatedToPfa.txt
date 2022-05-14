@@ -1,0 +1,14 @@
+https://www.codecheef.org/article/ajax-jquery-insert-data-in-laravel : how to insert data into database with ajax
+https://www.codecheef.org/article/delete-record-using-ajax-request-in-laravel : how to delete data from database with ajax
+https://www.tutsmake.com/laravel-8-fetch-data-using-ajax-tutorial-example/ : how to fetch data from database with ajax
+https://onlinewebtutorblog.com/laravel-9-one-to-many-eloquent-relationship-tutorial/ : One to Many relationship between Models
+https://colorlib.com/wp/bootstrap-tables/ : Bootstrap Table
+
+Query to show users all the category of performances :
+INSERT INTO `performance_projet` (`performance_id`, `projet_id`) VALUES
+(1, projet_id),
+(2, projet_id),
+(3, projet_id),
+(4, projet_id),
+(5, projet_id),
+(6, projet_id);

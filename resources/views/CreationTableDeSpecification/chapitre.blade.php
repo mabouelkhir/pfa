@@ -1,9 +1,19 @@
 
 @extends('layouts.master')
-
+<style>
+  .everything{
+    background-color:#efefef;
+  }
+</style>
+<div class="everything">
 @section('content')
 @include('partials.analyseetdesign')
-                @if (session('status'))
+
+  
+
+<link rel="stylesheet" href="{{asset('css/pop.css')}}">
+              
+               @if (session('status'))
                 <div class="alert alert-success">
                     {{ session('status') }}
                 </div>
@@ -18,94 +28,122 @@
                 
                 @endforeach
 
-                <div class="accordion" id="accordionExample" >
-                    <div class="accordion-item">
-                    <h2 class="accordion-header" id="headingOne">
-                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="false" aria-controls="collapseOne">
-                        Créer Chapitre
-                        </button>
-                    </h2>
-                    <div id="collapseOne" class="accordion-collapse collapse" aria-labelledby="headingOne" data-bs-parent="#accordionExample" style="">
-                        <div class="accordion-body">
-                            <form method="POST" action="{{route('chapitre.store')}}" enctype="multipart/form-data">
-                                @csrf
-                                
-                             
-                                 <div class="container rounded bg-white mt-5 mb-5">
-                                     <div class="row">
-                                         
-                                         <div class="col-md-5 border-right">
-                                             <div class="p-3 py-5">
-                                                 <div class="d-flex justify-content-between align-items-center mb-3">
-                                                     <h4 class="text-right">
-                                                         Chapitre Setting
-                                                     </h4>
-                                                 </div>
-                                                 
-                                                 <div class="row mt-2">
-                                                     <div class="col-md-6"><label class="labels">Nom Chapitre</label><input type="text" class="form-control" placeholder="nom chapitre" name="nom_chapitre"></div>
-                                                     
-                                                 </div>
-                                                 <div class="row mt-2">
-                                                    <div class="col-md-6"><label class="labels"></label><input type="text" class="form-control" placeholder="PROJET ID" name="projet_id" value="{{$IdProjet}}" hidden ></div>
-                                                    
-                                                </div>
-                                                 
-                                                 
-                                                    
-                                                 
-                                                 
-                                                 <div class="mt-5 text-center"><button class="btn btn-primary profile-button" type="submit">ADD CHAPITRE</button></div>
-                                             </div>
-                                         </div>
-                                        
-                                     </div>
-                                 </div>
-                                 </div>
-                                 </div>
-                                  
-                             </form>
-                                    
+                <div class="overlay" id="overlay">
+                    <div class="popup">
+                      <div onclick="CloseModal()" class="CloseIcon">&#10006;</div>
+                      <form method="POST" action="{{route('chapitre.store')}}" enctype="multipart/form-data">
+                        @csrf
+                          <h4 class="text-right mt-3" style="margin-right:255px;">Chapitre Setting</h4>
+                          
+                          <div class="col-md-6 text-center mt-5 " style="margin-left: 120px;">
+                             <input type="text" class="form-control text-center center ml-5" placeholder="nom chapitre" name="nom_chapitre" >
+                          </div>
+                          
+                          <div class="col-md-6 "><label class="labels"></label>
+                            <input type="text" class="form-control ml-5" placeholder="PROJET ID" name="projet_id" value="{{$IdProjet}}" hidden>
+                         </div>
+                                            
+                          <div class="mt-5 text-center " ><button class="btn btn-primary" type="submit">ADD Chapitre</button></div>
                         </div>
-                    </div>
-                    </div>
+                          
+                       </form>
+                    
+                  </div>
+                  <button onclick="OpenModal()" class="btn btn-primary" style="margin-left: 35px;">Ajouter un chapitre</button>
+              
+                    
+
+
+                  <head>
+                    <!-- Required meta tags -->
+                    <meta charset="utf-8">
+                    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+                    <link href="https://fonts.googleapis.com/css?family=Roboto:300,400&display=swap" rel="stylesheet">
                 
-
+                    <link rel="stylesheet" href="{{asset('tablecheck/fonts/icomoon/style.css')}}">
+                     
+                    <link rel="stylesheet" href="{{asset('tablecheck/css/owl.carousel.min.css')}}">
+                
+                    <!-- Bootstrap CSS -->
+                    <link rel="stylesheet" href="{{asset('tablecheck/css/bootstrap.min.css')}}">
                     
-                    
-
-
-                    @foreach ($lesChapitres as $chapitre )           
-                                
-                                <div class="container">
-                                    <div class="row">
-                                        <div class="col-md-6">
-                                                <div class="list-group">
-                                                    
-                                                    <form action="{{ route('chapitre.destroy',$chapitre->id)}}" method="POST">
-                                                    <table>
-                                                        <tr>
-                                                            <td width="200px"><a href="{{ url('projet/'.$IdProjet.'/chapitre/'.$chapitre->id)}}" class="list-group-item list-group-item-action">{{$chapitre->nom_chapitre}}</a></td>
-                                                            <td>
-                                                                @csrf
-                                                                @method('delete')
-                                                                <button type="submit" class="trash show_confirm" aria-label="Close">
-                                                                    <span aria-hidden="true">&times;</span>
-                                                                </button>
-                                                            </td>
-                                                        </tr>
-                                                    </table>
-                                                        
-                                                         
-                                                    </form>
-                                                    
-                                                </div>
-                                        
-                                        </div>
-                                    </div>
-                                </div>
+                    <!-- Style -->
+                    <link rel="stylesheet" href="{{asset('tablecheck/css/style.css')}}">
+                
+                    <title>Chapitre</title>
+                  </head>
+                  <body>
             
-                    @endforeach
+            
+                    <div class="content">
+                      
+                      <div class="container">
+                        <h2 class="mb-5">Les Chapitres</h2>
+                        
+                  
+                        <div class="table-responsive custom-table-responsive">
+                  
+                          <table class="table custom-table">
+                            <thead>
+                              <tr >  
+                              <tr style="background-color: black; color:white;">  
+                  
+                                <th scope="col">
+                                  
+                                </th>
+                                
+                                <th scope="col">ID</th>
+                                <th scope="col">Chapitre</th>
+                                <th scope="col">delete</th>
+                                <th scope="col">edit</th>
+                        
+                              </tr>
+                            </thead>
+                         
+                            <tbody>
+                               @foreach ($lesChapitres as $chapitre )
+                              <tr scope="row">
+                                <th></th>
+                                <td>{{$chapitre->id}}</td>
+                                <td>
+                                    <a href="{{ url('projet/'.$IdProjet.'/chapitre/'.$chapitre->id)}}" class="link-dark">{{$chapitre -> nom_chapitre }}</a>
+                                </td>
+                                <td>
+                                    <form action="{{ route('chapitre.destroy',$chapitre->id)}}" method="POST">
+                                        @csrf
+                                        @method('delete')
+                                        <button type="submit" class="trash show_confirm" aria-label="Close">
+                                                <span aria-hidden="true">&times;</span>
+                                        </button>
+                                    </form>
+                                </td>
+                               
+                                <td> </td>
+                               
+                              </tr>
+                              @endforeach
+                            </tbody>
+                          </table>
+                       
+                        </div>
+                  
+                  
+                      </div>
+                  
+                    </div>
+                      
+                      
+                  
+                      
+                
+                    <script src="{{asset('tablecheck/js/jquery-3.3.1.min.js')}}"></script>
+                    <script src="{{asset('tablecheck/js/popper.min.js')}}"></script>
+                    <script src="{{asset('tablecheck/js/bootstrap.min.js')}}"></script>
+                    <script src="{{asset('tablecheck/js/main.js')}}"></script>
+                  </body>
+                </html>
+            
+            
                     <script src="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/2.1.0/sweetalert.min.js"></script>
                     <script type="text/javascript">
                     
@@ -128,7 +166,8 @@
                         });
                     
                     </script>
+                    <script src="{{asset('js/pop.js')}}"></script>
                     
                   
-
+                  </div>
 @endsection

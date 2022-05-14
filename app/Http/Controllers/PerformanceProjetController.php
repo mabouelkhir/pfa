@@ -47,10 +47,26 @@ class PerformanceProjetController extends Controller
 
     }
     public function prepare(Request $request){
-        for($i=1;$i<7;$i++){
-            $verif=PerformanceProjet::where('projet_id',$request->input('projet_id'))->where('performance_id',$i)->first();
-            print_r($verif);
-        }
+        
+        $performance_id=$request->input('performance_id');
+        $projet_id=$request->input('projet_id');
+       
+        for($i=0;$i<6;$i++){
+            $liaison=new PerformanceProjet();
+            $liaison->performance_id=$performance_id[$i];
+            
+            $liaison->projet_id=$projet_id[$i];
+            
+            if(PerformanceProjet::where('projet_id',$projet_id[$i])->where('performance_id',$performance_id[$i])->exists()){
+                
+            }else{
+                $liaison->save();
+            }
+            
+           
+             
+        } return redirect('projet/performance/'.$projet_id[0]);
+       
         
     }
     

@@ -5,6 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use App\Models\Section;
+use App\Models\Qcm;
 use App\Models\Performance;
 class Point extends Model
 {
@@ -25,5 +26,9 @@ class Point extends Model
     public function performances()
     {
         return $this->belongsToMany(Performance::class, 'performance_point');
+    }
+    public function qcms()
+    {
+        return $this->hasMany(Qcm::class);
     }
 }

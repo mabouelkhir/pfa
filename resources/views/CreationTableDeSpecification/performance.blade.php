@@ -1,4 +1,10 @@
 @extends('layouts.master')
+<style>
+  .everything{
+    background-color:#efefef;
+  }
+</style>
+<div class="everything">
 @section('content')
 @include('partials.analyseetdesign')
         @if (session('status'))
@@ -37,7 +43,7 @@
     
             <table class="table custom-table">
               <thead>
-                <tr>  
+                <tr style="background-color: black; color:white;">  
     
                   <th scope="col">
                     

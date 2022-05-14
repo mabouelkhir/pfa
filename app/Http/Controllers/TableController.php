@@ -1,21 +1,32 @@
 <?php
 
 namespace App\Http\Controllers;
-use App\Projet;
-use App\Models\Chapitre;
-use App\Models\Section;
-use App\Models\Point;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Auth;
+
+use App\Models\Performance;
+use App\Models\PerformanceProjet;
+use App\Projet;
+use App\Models\Point;
+
 
 
 class TableController extends Controller
 {
     public function index($id)
-    {   $id_projet=$id;
+    {   $id_projet=$id; 
+        
+        $duplicate=array();
+        $liaisons=PerformanceProjet::where('projet_id',$id)->where('statut','oui')->get();
+        $performances=Performance::all();
         $projets=Projet::where('id',$id)->get();
-        return view(('table'),['lesProjets' => $projets,'IdProjet' => $id_projet]);
+       
+        $pointevaluers=Point::all();
+        return view(('CreationTableDeSpecification.table'),[
+        'IdProjet'=>$id_projet,'lesPoints' => $pointevaluers,'duplicates'=>$duplicate,
+        'lesProjets' => $projets,'lesPerformances' => $performances,
+        'lesLiaisons'=>$liaisons]);
     }
+    
     public function navbar($id)
     { 
         $id_projet=$id;
