@@ -38,8 +38,17 @@
     <title>Qcm view</title>
   </head>
   <body>
+ 
     
     <div class="content">
+      <style>
+      body{
+        overflow-y: scroll;
+overflow-x: hidden;
+      }
+      </style>
+        
+      
 @foreach ($lesQcms as $qcm )      
       <div class="container">
         
@@ -74,8 +83,13 @@
                 
               </tr>
             </thead> -->
-            <strong>Enoncé de la question:</strong>
-            <div  class="text open">
+            <strong><h4>ENONCE</h4></strong>
+            <style>
+              h4{
+                text-decoration: underline;
+              }
+            </style>
+            <div  class="text open" style="width: 100px;">
         <div id="question_preview_core">
             <p>  @php
                     echo($qcm->amorce) ;
@@ -83,6 +97,7 @@
             </div>
         
             <tbody>
+           
             @foreach ($qcm->propositions as $proposition )
                @if ($proposition->help =='oui')
                  <tr scope="row">
@@ -117,8 +132,12 @@
                   </form>
                   </td>
                   @if (!in_array($proposition->proposition,$generale) )
-                    <td><a class="btn btn-success" href="{{url('projet/'.$IdProjet.'/banquedequestion/'.$IdPoint.'/categorie/'.$IdPerformance.'/Qcm/'.$qcm->id.'/editproposition/'.$proposition->id)}}">Modifier</a></td>
-                 
+                    <td><a class="btn btn-success" style="background-color:#6FDFDF ;border-color:#6FDFDF!important;" href="{{url('projet/'.$IdProjet.'/banquedequestion/'.$IdPoint.'/categorie/'.$IdPerformance.'/Qcm/'.$qcm->id.'/editproposition/'.$proposition->id)}}"><h6>Modifier</h6></a></td>
+                 <style>
+                   h6{
+                     color: black;
+                   }
+                 </style>
                  @else
                   <td></td>
 
@@ -135,8 +154,8 @@
                
                 <tr scope="row">
                     <td colspan="6" class="text-center">
-                        <a class="btn btn-primary" href="{{url('projet/'.$IdProjet.'/banquedequestion/'.$IdPoint.'/categorie/'.$IdPerformance)}}">Retourner</a>
-                         <a class="btn btn-primary" href="{{url('projet/'.$IdProjet.'/banquedequestion/'.$IdPoint.'/categorie/'.$IdPerformance.'/Qcm/'.$qcm->id.'/addproposition/')}}" >Ajouter des solutions générale</a>
+                        <a class="btn btn-primary" style="background-color:#553592 ;border-color:#553592!important;" href="{{url('projet/'.$IdProjet.'/banquedequestion/'.$IdPoint.'/categorie/'.$IdPerformance)}}">Retourner</a>
+                         <a class="btn btn-primary"  style="background-color:#553592 ;border-color:#553592!important;" href="{{url('projet/'.$IdProjet.'/banquedequestion/'.$IdPoint.'/categorie/'.$IdPerformance.'/Qcm/'.$qcm->id.'/addproposition/')}}" >Ajouter des solutions générale</a>
                     </td>
                 </tr>
          </tbody>

@@ -38,11 +38,22 @@
                     <div class="content">
                       
                       <div class="container">
-                        <h2 class="mb-5">Les Points à évaluers Disponnible en 
+                      <div class="alert alert-dismissible alert-success mt-5" style="background-color:#6FDFDF !important;">
+            
+            
+                        <h2 class="mb-5">Les Points à évaluers Disponible en 
                           @foreach (App\Projet::where('id',$IdProjet)->get() as $projet )
-                          {{$projet->nom}}
+                          <strong>{{$projet->nom}}</strong>
+</div>
                          @endforeach
                       </h2>
+                      <style>
+                        h2 {
+  text-align: center;
+  height: 2px;
+  color:black;
+}
+                      </style>
                         
                   
                         <div class="table-responsive custom-table-responsive">

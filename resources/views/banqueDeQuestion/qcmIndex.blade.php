@@ -48,6 +48,12 @@
       
       <div class="container">
         <h2 class="mb-5">Les Points à évaluers</h2>
+        <style>
+          h2{
+            text-align:center;
+            text-decoration: underline;
+          }
+        </style>
         
   
         <div class="table-responsive custom-table-responsive">
@@ -111,7 +117,7 @@
       
               <br>
               
-              <td colspan="20" class="text-center"><a class="btn btn-outline-primary"  style="width:300px" href="{{url('projet/'.$IdProjet.'/banquedequestion/'.$IdPoint.'/categorie/'.$IdPerformance.'/creationqcm/')}}">Ajouter un QCM</a></td>
+              <td colspan="20" class="text-center"><a class="btn btn-primary"  style="width:300px;background-color:#553592 ;border-color:#553592!important;" href="{{url('projet/'.$IdProjet.'/banquedequestion/'.$IdPoint.'/categorie/'.$IdPerformance.'/creationqcm/')}}">Ajouter un QCM</a></td>
             </tr>
               
             

@@ -1,7 +1,7 @@
 @extends('layouts.master')
 <style>
   .everything{
-    background-color:#efefef;
+    background-color:#e5e3f1;
   }
 </style>
 <div class="everything">
@@ -43,13 +43,13 @@
                 <input type="text" class="form-control ml-5" placeholder="Chapitre ID" name="chapitre_id" value="{{$IdChapitre}}" hidden>
              </div>
                                 
-              <div class="mt-5 text-center " ><button class="btn btn-primary" type="submit">ADD Section</button></div>
+              <div class="mt-5 text-center " ><button class="btn btn-primary" style="background-color:#553592 ;border-color:#553592!important;" type="submit">Ajouter une Section</button></div>
             </div>
               
            </form>
         
       </div>
-      <button onclick="OpenModal()" class="btn btn-primary" style="margin-left: 35px;">Ajouter une section</button>
+      <button onclick="OpenModal()" class="btn btn-primary" style="margin-left: 35px;background-color:#553592 ;border-color:#553592!important;">Ajouter une section</button>
   
 
 

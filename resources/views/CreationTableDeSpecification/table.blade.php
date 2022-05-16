@@ -1,7 +1,7 @@
 @extends('layouts.master')
 <style>
   .everything{
-    background-color:#efefef;
+    background-color:#e5e3f1;
   };
  
 
@@ -52,7 +52,7 @@
                                   
                                 </th>
                                 
-                                <th scope="col"> Chapitre</th>
+                                <th scope="col" > Chapitre</th>
                                 <th scope="col"> Section</th>
                                 <th scope="col">Point à Evaluer</th>
                                 <th scope="col">Supprimer</th>

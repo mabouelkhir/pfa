@@ -12,6 +12,8 @@ class PropositionController extends Controller
         $proposition->proposition=$request->input('proposition');
         $proposition->help=$request->input('help');
         $proposition->qcm_id=$request->input('qcm_id');
+
+        
         
      
        if(Proposition::where('qcm_id',$request->input('qcm_id'))->where('proposition',$request->input('proposition'))->exists()){
@@ -22,6 +24,7 @@ class PropositionController extends Controller
            $proposition->save();
            return redirect()->back()->with('status', '  Inseré avec succes ! ');
        }
+       
        
        
         
@@ -66,4 +69,20 @@ class PropositionController extends Controller
         $proposition->delete();
         return redirect()->back();
     }
+    public function uploadimage(Request $request)
+    {
+        if($request->hasFile('upload')) {
+            $originName = $request->file('upload')->getClientOriginalName();
+            $fileName = pathinfo($originName, PATHINFO_FILENAME);
+            $extension = $request->file('upload')->getClientOriginalExtension();
+            $fileName = $fileName.'_'.time().'.'.$extension;
+           
+            $request->file('upload')->move(public_path('images'), $fileName);
+      
+            
+            $url = asset('images/'. $fileName); 
+            return response()->json(['fileNme' =>$fileName,'uploaded'=>1, 'url' =>$url]);
+        }
+ 
+   }
 }

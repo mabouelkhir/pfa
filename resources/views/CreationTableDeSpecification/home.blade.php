@@ -1,7 +1,7 @@
 @extends('layouts.masterv')
 @section('content')
 
-<head>
+<head style="background-color: #e5e3f1">
   <!-- Required meta tags -->
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -19,6 +19,7 @@
 
   <title>Les Projets</title>
 </head>
+<body style="background-color: #e5e3f1">
 
 <div class="content">
     
@@ -79,6 +80,7 @@
   </div>
 
 </div>
+</body>
 <script src="{{asset('tableclickable/js/jquery-3.3.1.min.js')}}"></script>
 <script src="{{asset('tableclickable/js/popper.min.js')}}"></script>
 <script src="{{asset('tableclickable/js/bootstrap.min.js')}}"></script>

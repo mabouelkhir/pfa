@@ -1,4 +1,4 @@
-<nav class="navbar navbar-expand-lg navbar-light bg-light " id="navbar" >
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark " style="background-color:#553592 !important;" id="navbar" >
     <div class="container-fluid">
       <a class="navbar-brand" href="/">MyEval</a>
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarColor03" aria-controls="navbarColor03" aria-expanded="false" aria-label="Toggle navigation">
@@ -17,10 +17,17 @@
           <li class="nav-item dropdown">
             <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Banque De Question</a>
             <div class="dropdown-menu">
-              <a class="dropdown-item" href="{{url('projet/'.$IdProjet.'/banquedequestion/')}}">Redaction</a>
+              <a class="dropdown-item" href="{{url('projet/'.$IdProjet.'/banquedequestion/')}}"><h6>Redaction </h6></a>
               
               <div class="dropdown-divider"></div>
-              <a class="dropdown-item" href="{{url('projet/'.$IdProjet.'/banquedequestion/validation')}}">Validation</a>
+              <a class="dropdown-item" href="{{url('projet/'.$IdProjet.'/banquedequestion/validation')}}"><h6>Validation </h6></a>
+
+              <style>
+                .dropdown-item:hover {background-color: #553592 !important;}
+                h6:hover {
+  color: white;
+}
+              </style>
             </div>
           </li>
           <li class="nav-item">

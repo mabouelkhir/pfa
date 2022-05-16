@@ -2,7 +2,7 @@
 @extends('layouts.master')
 <style>
   .everything{
-    background-color:#efefef;
+    background-color:#e5e3f1;
   }
 </style>
 <div class="everything">
@@ -49,7 +49,7 @@
                        </form>
                     
                   </div>
-                  <button onclick="OpenModal()" class="btn btn-primary" style="margin-left: 35px;">Ajouter un chapitre</button>
+                  <button onclick="OpenModal()" class="btn btn-primary" style="margin-left: 35px;background-color:#553592 ;border-color:#553592!important;">Ajouter un chapitre</button>
               
                     
 

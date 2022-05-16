@@ -20,9 +20,16 @@
     
 
    
-    <div class="alert alert-dismissible alert-success">
+    <div class="alert alert-dismissible alert-success" style="background-color:#6FDFDF !important;">
+        
            <h4 class="text-center mt-3" >QCM </h4>
+           <style>
+               h4{
+                   color:black;
+               }
+           </style>
         </div>
+        <br></br>
 
     
     
@@ -31,12 +38,13 @@
         {{ session('status') }}
     </div>
     @endif
-    <a class="btn btn-primary" href="{{url('projet/'.$IdProjet.'/banquedequestion/'.$IdPoint.'/categorie/'.$IdPerformance)}}" style="margin:auto;">Retourner</a>
+    <a class="btn btn-primary"  style="width:100px;background-color:#553592 ;border-color:#553592!important;" href="{{url('projet/'.$IdProjet.'/banquedequestion/'.$IdPoint.'/categorie/'.$IdPerformance)}}" style="margin:auto;">Retourner</a>
     <form method="POST" action="/create" enctype="multipart/form-data" novalidate>
         @csrf
+        <br></br>
         <div class="form-group">
                 <strong>  Intitule: </strong><br>
-                <input type="text"  name="nom_qcm" class="form-control" placeholder="intitule" required>
+                <input type="text"  name="nom_qcm" class="form-control" style="border-color:black;" placeholder="intitule" required>
                 
             </div>
           
@@ -159,7 +167,7 @@
          
         
     
-<div class="mt-3 text-center mb-5 " style="margin: auto;"><button class="btn btn-primary" type="submit">Ajouter QCM</button></div>
+<div class="mt-3 text-center mb-5 " style="margin: auto;"><button class="btn btn-primary" style="width:300px;background-color:#553592 ;border-color:#553592!important;" type="submit">Ajouter QCM</button></div>
     
 </div>
 </form>   

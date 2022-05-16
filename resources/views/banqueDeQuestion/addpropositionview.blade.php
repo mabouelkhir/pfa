@@ -7,9 +7,9 @@
     {{ session('status') }}
 </div>
 @endif
-<a class="btn btn-primary" href="{{url('projet/'.$IdProjet.'/banquedequestion/'.$IdPoint.'/categorie/'.$IdPerformance.'/Qcm/'.$IdQcm)}}" style="margin:auto;">Retourner</a>
-
-    <div class="alert alert-dismissible alert-success">
+<a class="btn btn-primary" style="background-color:#553592 ;border-color:#553592!important;" href="{{url('projet/'.$IdProjet.'/banquedequestion/'.$IdPoint.'/categorie/'.$IdPerformance.'/Qcm/'.$IdQcm)}}" style="margin:auto;">Retourner</a>
+<br></br>
+    <div class="alert alert-dismissible alert-success" style="background-color:#6FDFDF ;border-color:#6FDFDF!important;">
        <h4 class="text-center mt-3" >SOLUTIONS GENERALES</h4>
     </div>
       

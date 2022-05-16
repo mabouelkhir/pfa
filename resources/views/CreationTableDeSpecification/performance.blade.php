@@ -1,7 +1,7 @@
 @extends('layouts.master')
 <style>
   .everything{
-    background-color:#efefef;
+    background-color:#e5e3f1;
   }
 </style>
 <div class="everything">

@@ -44,8 +44,14 @@
       <div class="container">
         @if(!in_array( $chapitre->nom_chapitre, $duplicates))
 
-           <div class="alert alert-dismissible alert-success mt-5">
+           <div class="alert alert-dismissible alert-success mt-5" style="background-color:#6FDFDF !important;margin-top:100px;">
             <h4 class="text-center mt-3" >{{$chapitre->nom_chapitre}}</h4>
+            <style>
+              h4{
+                color:white;
+               
+              }
+            </style>
          </div>
 
         @php
@@ -64,13 +70,20 @@
       @if (App\Models\Qcm::where('nom_performance',$performance->nom_performance)->where('point_id',$point->id)->exists())
           <table class="table custom-table" >
             <thead>
-                <tr ><th scope="col" colspan="4">{{$section->nom_section}}</th></tr>
-                <tr><th scope="col" colspan="4">{{$point->nom_point}}</th></tr>
+                <tr ><th scope="col" colspan="4"><h4>{{$section->nom_section}}:</h4></th></tr>
+                <tr><th scope="col" colspan="4"><h4>{{$point->nom_point}}:</h4></th></tr>
                 
                 @foreach (App\Models\Qcm::where('nom_performance',$performance->nom_performance)->where('point_id',$point->id)->get() as $qcm)
                             @if(!in_array( $qcm->nom_performance, $duplicates))
 
-                            <tr><th scope="col" colspan="4">  {{$qcm->nom_performance}}</th></tr>
+                            <tr><th scope="col" colspan="4">  <h4>{{$qcm->nom_performance}}:</h4></th></tr>
+                            <style>
+                              h4{
+                                text-decoration: underline;
+                                color:black;
+                              }
+                             
+                            </style>
                             
                     
                             @php

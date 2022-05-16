@@ -1,7 +1,7 @@
 @extends('layouts.master')
 <style>
   .everything{
-    background-color:#efefef;
+    background-color:#e5e3f1
   }
 </style>
 <div class="everything">
@@ -46,13 +46,13 @@
                 <input type="text" class="form-control ml-5" placeholder="SECTION ID" name="section_id" value="{{$IdSection}}" hidden>
              </div>
                                 
-              <div class="mt-5 text-center " ><button class="btn btn-primary" type="submit">ADD Point à évaluer</button></div>
+              <div class="mt-5 text-center " ><button class="btn btn-primary" style= "background-color:#553592 ;border-color:#553592!important;" type="submit">Ajouter une Point à évaluer</button></div>
             </div>
               
            </form>
         
       </div>
-      <button onclick="OpenModal()" class="btn btn-primary" style="margin-left: 35px;">Ajouter un Point à évaluer </button>
+      <button onclick="OpenModal()" class="btn btn-primary" style="margin-left: 35px;background-color:#553592 ;border-color:#553592!important;">Ajouter un Point à évaluer </button>
   
   
 
